@@ -7,7 +7,9 @@ interface IProps {
     label: string;
     name: string;
     type: string;
-    placeHolder: string;
+    placeHolder?: string;
+    value?: string;
+    unit?: string;
     inputValue: (value: { [name: string]: number }) => void;
 }
 
@@ -18,14 +20,16 @@ const Input: React.FC<IProps> = (props) => {
 
     return (
         <div className="input-wrapper">
-            <label> {props.label}</label>
+            <label className="input-label"> {props.label}</label>
             <input
                 className="input-field"
                 name={props.name}
                 type={props.type}
                 placeholder={props.placeHolder}
                 onChange={onChangeHandler}
+                value={props.value}
             />
+            <label className="input-unit"> {props.unit}</label>
         </div>
     );
 };
