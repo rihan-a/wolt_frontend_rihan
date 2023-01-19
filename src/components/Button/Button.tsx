@@ -13,9 +13,11 @@ const Button: React.FC<IProps> = (props) => {
     };
 
     return (
-        <button id={props.id} className="btn" onClick={handleClick}>
-            {props.value}
-        </button>
+        <div className="btn-wrapper">
+            <button id={props.id} className="btn" onClick={handleClick}>
+                {props.value}
+            </button>
+        </div>
     );
 };
 
