@@ -1,22 +1,55 @@
 .input-wrapper {
-    width: 420px;
+    width: 600px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     height: 50px;
 }
 
-.input-wrapper label {
+.input-wrapper .input-label {
     font-weight: 800;
     font-size: 1.1rem;
+    width: 180px;
 }
 
 .input-field {
     height: 40px;
-    width: 200px;
-    background-color: black;
-    color: white;
+    width: 300px;
+    /* background-color: #009de0; */
+    color: rgb(100, 100, 100);
     border: none;
-    border-radius: 40px;
+    /* border-radius: 40px; */
     padding-left: 15px;
+    padding-right: 10px;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto,
+        "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-style: normal;
+    font-stretch: normal;
+    text-transform: none;
+    font-weight: 400;
+    appearance: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    /* width: 100%; */
+
+    transition: border 0.2s linear 0s;
+    border-radius: 0.5rem;
+    border: 2px solid rgba(32, 33, 37, 0.12);
+    padding: 0.75rem 0.875rem;
+    margin-right: 10px;
+}
+
+.input-field::placeholder {
+    color: rgb(100, 100, 100);
+}
+
+.input-field::-webkit-outer-spin-button,
+.input-field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
