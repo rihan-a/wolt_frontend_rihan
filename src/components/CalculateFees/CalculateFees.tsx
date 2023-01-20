@@ -72,6 +72,17 @@ function UserInputs() {
             }
         }
 
+        // check if the delivery fees is more than 15, the delivery fees can't be more than 15
+        if (deliveryFeesCounter > 15) {
+            // set the delivery fees to 15 euro
+            deliveryFeesCounter = 15;
+        }
+        // check if the cart value is equal or more than 100
+        if (inputValues.cartValue >= 100) {
+            // set delivery fees to zero
+            deliveryFeesCounter = 0;
+        }
+
         setDeliveryFees(Number(deliveryFeesCounter.toFixed(2)));
     };
 
