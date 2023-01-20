@@ -4,17 +4,13 @@ import "./Button.css";
 interface IProps {
     id: string;
     value: string;
-    handleClick: () => void;
+    btnType: any;
 }
 
 const Button: React.FC<IProps> = (props) => {
-    const handleClick = () => {
-        props.handleClick();
-    };
-
     return (
         <div className="btn-wrapper">
-            <button id={props.id} className="btn" onClick={handleClick}>
+            <button id={props.id} className="btn" type={props.btnType}>
                 {props.value}
             </button>
         </div>
