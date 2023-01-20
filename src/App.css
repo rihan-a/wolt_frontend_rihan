@@ -1,0 +1,32 @@
+.main-wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f3f5;
+}
+
+.app-card {
+    width: 60%;
+    height: 600px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.app-card h1 {
+    text-align: center;
+}
+
+.title-wrapper {
+    width: 39%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+.title-wrapper img {
+    width: 60px;
+    height: 60px;
+}
