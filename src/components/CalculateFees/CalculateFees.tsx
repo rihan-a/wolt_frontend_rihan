@@ -1,9 +1,13 @@
+// CALCULATE DELIVERY FEES COMPONENT
+// a component to collect user inputs and calculate the total delivery fees
+
 import React, { useState } from "react";
 import "./CalculateFees.css";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import DeliveryFees from "../DeliveryFees/DeliveryFees";
 
+// types interface
 interface IState {
     cartValue: number;
     deliveryDistance: number;
@@ -11,7 +15,8 @@ interface IState {
     orderTime: any;
 }
 
-function UserInputs() {
+const CalculateFees = () => {
+    //store user input values
     const [inputValues, setInputValues] = useState<IState>({
         cartValue: 0,
         deliveryDistance: 0,
@@ -19,10 +24,7 @@ function UserInputs() {
         orderTime: null,
     });
 
-    //toISOString().slice(0, -1)
-
-    const [deliveryFees, setDeliveryFees] = useState<number>(0);
-
+    // function to collect user input values from Input components onChange event
     const inputValueHandler = (
         value: { [name: string]: number } | undefined
     ) => {
@@ -33,6 +35,9 @@ function UserInputs() {
             ...value,
         }));
     };
+
+    // store delivery fees
+    const [deliveryFees, setDeliveryFees] = useState<number>(0);
 
     // function to calculate the tottal delivery fees based on the user input data
     const calculateDeliveryFees = (e: any) => {
@@ -149,6 +154,6 @@ function UserInputs() {
             <DeliveryFees fees={deliveryFees} />
         </section>
     );
-}
+};
 
-export default UserInputs;
+export default CalculateFees;
