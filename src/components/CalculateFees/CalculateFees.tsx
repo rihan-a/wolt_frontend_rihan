@@ -8,7 +8,7 @@ interface IState {
     cartValue: number;
     deliveryDistance: number;
     numberOfItems: number;
-    orderTime: string | null;
+    orderTime: any;
 }
 
 function UserInputs() {
@@ -35,7 +35,7 @@ function UserInputs() {
     };
 
     // function to calculate the tottal delivery fees based on the user input data
-    const calculateFees = (e: any) => {
+    const calculateDeliveryFees = (e: any) => {
         e.preventDefault();
         e.target.reset();
 
@@ -60,12 +60,24 @@ function UserInputs() {
             deliveryFeesCounter += additional500MCount;
         }
 
+        // check if the number of items is more than 5
+        if (inputValues.numberOfItems > 4) {
+            // if (inputValues.numberOfItems === 5) {
+            //     deliveryFeesCounter += 0.5;
+            // }
+            let itemsMoreThanFive = inputValues.numberOfItems - 4;
+            deliveryFeesCounter += itemsMoreThanFive * 0.5;
+            if (inputValues.numberOfItems > 12) {
+                deliveryFeesCounter += 1.2;
+            }
+        }
+
         setDeliveryFees(Number(deliveryFeesCounter.toFixed(2)));
     };
 
     return (
         <section>
-            <form onSubmit={calculateFees}>
+            <form onSubmit={calculateDeliveryFees}>
                 <Input
                     label="Cart Value"
                     name="cartValue"
