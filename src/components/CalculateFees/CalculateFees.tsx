@@ -35,7 +35,10 @@ function UserInputs() {
     };
 
     // function to calculate the tottal delivery fees based on the user input data
-    const calculateFees = () => {
+    const calculateFees = (e: any) => {
+        e.preventDefault();
+        e.target.reset();
+
         // intiate delivery fees counter to keep track of the different delivery fees
         let deliveryFeesCounter: number = 0;
 
@@ -58,51 +61,55 @@ function UserInputs() {
         }
 
         setDeliveryFees(Number(deliveryFeesCounter.toFixed(2)));
-
-        console.log(deliveryFees);
     };
 
     return (
         <section>
-            <Input
-                label="Cart Value"
-                name="cartValue"
-                type="number"
-                unit="€"
-                inputValue={inputValueHandler}
-                placeHolder="Enter Cart Value"
-            />
+            <form onSubmit={calculateFees}>
+                <Input
+                    label="Cart Value"
+                    name="cartValue"
+                    type="number"
+                    step={0.01}
+                    unit="€"
+                    inputValue={inputValueHandler}
+                    placeHolder="Enter Cart Value"
+                    required="required"
+                />
 
-            <Input
-                label="Delivery Distance"
-                name="deliveryDistance"
-                type="number"
-                unit="m"
-                inputValue={inputValueHandler}
-                placeHolder="Enter Delivery distance"
-            />
-            <Input
-                label="Number of Items"
-                name="numberOfItems"
-                type="number"
-                inputValue={inputValueHandler}
-                placeHolder="Enter the number of items"
-            />
+                <Input
+                    label="Delivery Distance"
+                    name="deliveryDistance"
+                    type="number"
+                    unit="m"
+                    inputValue={inputValueHandler}
+                    placeHolder="Enter Delivery distance"
+                    required="required"
+                />
+                <Input
+                    label="Number of Items"
+                    name="numberOfItems"
+                    type="number"
+                    inputValue={inputValueHandler}
+                    placeHolder="Enter the number of items"
+                    required="required"
+                />
 
-            <Input
-                label="Order Time"
-                name="orderTime"
-                type="datetime-local"
-                inputValue={inputValueHandler}
-                // value={inputValues.orderTime}
-            />
+                <Input
+                    label="Order Time"
+                    name="orderTime"
+                    type="datetime-local"
+                    inputValue={inputValueHandler}
+                    required="required"
+                    // value={inputValues.orderTime}
+                />
 
-            <Button
-                id="calculateBtn"
-                value="Calculate Delivery Fees"
-                handleClick={calculateFees}
-            />
-
+                <Button
+                    id="calculateBtn"
+                    value="Calculate Delivery Fees"
+                    btnType="submit"
+                />
+            </form>
             <DeliveryFees fees={deliveryFees} />
         </section>
     );
