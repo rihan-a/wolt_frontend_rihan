@@ -3,13 +3,15 @@
 
 import "./Input.css";
 
-interface IProps {
+interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label: string;
     name: string;
     type: string;
     placeHolder?: string;
     value?: string;
     unit?: string;
+    step?: number;
+    required?: any;
     inputValue: (value: { [name: string]: number }) => void;
 }
 
@@ -20,7 +22,11 @@ const Input: React.FC<IProps> = (props) => {
 
     return (
         <div className="input-wrapper">
-            <label className="input-label"> {props.label}</label>
+            <label className="input-label">
+                {" "}
+                {props.label}:
+                {props.required && <span className="required-star">*</span>}
+            </label>
             <input
                 className="input-field"
                 name={props.name}
@@ -28,6 +34,8 @@ const Input: React.FC<IProps> = (props) => {
                 placeholder={props.placeHolder}
                 onChange={onChangeHandler}
                 value={props.value}
+                step={props.step}
+                required={props.required}
             />
             <label className="input-unit"> {props.unit}</label>
         </div>
