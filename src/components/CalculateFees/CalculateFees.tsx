@@ -83,6 +83,13 @@ function UserInputs() {
             deliveryFeesCounter = 0;
         }
 
+        // check if the order time is During the Friday rush (3 - 7 PM UTC)
+        let orderTime = new Date(inputValues.orderTime);
+        console.log(orderTime);
+        if (orderTime.getUTCDay() === 5) {
+            console.log("its friday");
+        }
+
         setDeliveryFees(Number(deliveryFeesCounter.toFixed(2)));
     };
 
