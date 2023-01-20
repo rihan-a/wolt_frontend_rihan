@@ -6,8 +6,14 @@ import CalculateFees from "./components/CalculateFees/CalculateFees";
 function App() {
     return (
         <main className="main-wrapper">
-            <h1>Delivery Fee Calculator</h1>
-            <CalculateFees />
+            <section className="app-card">
+                <div className="title-wrapper">
+                    <img src="/images/Wolt_logo.png" alt="" />
+                    <h1>Delivery Fee Calculator</h1>
+                </div>
+
+                <CalculateFees />
+            </section>
         </main>
     );
 }
