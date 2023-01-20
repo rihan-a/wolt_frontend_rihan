@@ -72,6 +72,19 @@ function UserInputs() {
             }
         }
 
+        // check if the order time is During the Friday rush (3 - 7 PM UTC)
+        let orderTime = new Date(inputValues.orderTime);
+        console.log(orderTime);
+        // check if the order day is on friday
+        if (orderTime.getUTCDay() === 5) {
+            //check if the order is during Friday rush (3 - 7 PM UTC)
+            let orderHourUTC = orderTime.getUTCHours() - 12;
+            if (orderHourUTC > 2 && orderHourUTC < 8) {
+                // During friday rush multiply the delivery fees by 1.2x
+                deliveryFeesCounter *= 1.2;
+            }
+        }
+
         // check if the delivery fees is more than 15, the delivery fees can't be more than 15
         if (deliveryFeesCounter > 15) {
             // set the delivery fees to 15 euro
@@ -81,13 +94,6 @@ function UserInputs() {
         if (inputValues.cartValue >= 100) {
             // set delivery fees to zero
             deliveryFeesCounter = 0;
-        }
-
-        // check if the order time is During the Friday rush (3 - 7 PM UTC)
-        let orderTime = new Date(inputValues.orderTime);
-        console.log(orderTime);
-        if (orderTime.getUTCDay() === 5) {
-            console.log("its friday");
         }
 
         setDeliveryFees(Number(deliveryFeesCounter.toFixed(2)));
