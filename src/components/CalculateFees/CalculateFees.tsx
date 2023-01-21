@@ -41,19 +41,31 @@ const CalculateFees = () => {
     // store delivery fees
     const [deliveryFees, setDeliveryFees] = useState<number>(0);
 
+    const [error, setError] = useState("");
+
     // function to calculate the tottal delivery fees based on the user input data
     const calculateFeesHandler = (e: any) => {
         e.preventDefault();
-        e.target.reset();
-
-        // call calculate delivery fees function using the user inputs as an argument, store the returned value in a variable
-        const totalDeliveryFees: number = calculateDeliveryFees(inputValues);
-
-        setDeliveryFees(totalDeliveryFees);
+        if (
+            inputValues.cartValue <= 0 ||
+            inputValues.deliveryDistance <= 0 ||
+            inputValues.numberOfItems <= 0
+        ) {
+            console.log("error");
+            setError("Input fields must be valid numbers");
+        } else {
+            // reset all inputs on submit
+            setError("");
+            e.target.reset();
+            // call calculate delivery fees function using the user inputs as an argument, store the returned value in a variable
+            const totalDeliveryFees: number =
+                calculateDeliveryFees(inputValues);
+            setDeliveryFees(totalDeliveryFees);
+        }
     };
 
     return (
-        <section>
+        <section className="inputs-form">
             <form onSubmit={calculateFeesHandler}>
                 <Input
                     label="Cart Value"
@@ -104,6 +116,7 @@ const CalculateFees = () => {
                 />
             </form>
             <DeliveryFeesResult fees={deliveryFees} />
+            <p className="error-msg">{error}</p>
         </section>
     );
 };
