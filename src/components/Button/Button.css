@@ -1,27 +1,28 @@
+.btn-wrapper {
+    width: 90%;
+    margin: auto;
+}
+
 .btn {
-    height: 40px;
-    width: 300px;
-    background-color: #009de0;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(0, 194, 232);
     color: white;
     border: none;
     border-radius: 40px;
-    font-weight: 500;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizelegibility;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto,
         "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 1rem;
-    line-height: 1.5rem;
     font-style: normal;
     font-stretch: normal;
     text-transform: none;
     font-weight: 700;
     border-radius: 0.5rem;
     cursor: pointer;
-    margin-left: 180px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .btn:hover {
-    background-color: #35b1e6;
+    background-color: rgb(40, 205, 238);
 }
