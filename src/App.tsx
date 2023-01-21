@@ -8,7 +8,6 @@ function App() {
         <main className="main-wrapper">
             <section className="app-card">
                 <div className="title-wrapper">
-                    {/* <img src="/images/Wolt_logo.png" alt="wolt-logo" /> */}
                     <h1>Delivery Fee Calculator</h1>
                 </div>
                 <CalculateFees />
