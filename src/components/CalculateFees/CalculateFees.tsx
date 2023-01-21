@@ -142,7 +142,6 @@ const CalculateFees = () => {
                     type="datetime-local"
                     inputValue={inputValueHandler}
                     required="required"
-                    // value={inputValues.orderTime}
                 />
 
                 <Button
