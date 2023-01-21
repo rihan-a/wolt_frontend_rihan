@@ -6,7 +6,9 @@ interface IProps {
 }
 
 const DeliveryFees: React.FC<IProps> = (props) => {
-    return <div>Delivery Fees is {props.fees} €</div>;
+    return (
+        <div className="delivery-fees-output">Delivery fees: {props.fees}€</div>
+    );
 };
 
 export default DeliveryFees;
