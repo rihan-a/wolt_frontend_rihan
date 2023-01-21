@@ -1,5 +1,5 @@
 import React from "react";
-import "./DeliveryFees.css";
+import "./DeliveryFeesResult.css";
 
 interface IProps {
     fees: number;
