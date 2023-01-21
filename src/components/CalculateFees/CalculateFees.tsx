@@ -66,7 +66,7 @@ const CalculateFees = () => {
 
     return (
         <section className="inputs-form">
-            <form onSubmit={calculateFeesHandler}>
+            <form onSubmit={calculateFeesHandler} action="#">
                 <Input
                     label="Cart Value"
                     name="cartValue"
