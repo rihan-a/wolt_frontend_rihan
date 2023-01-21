@@ -1,0 +1,12 @@
+.delivery-fees-output {
+    height: 70px;
+    width: 90%;
+    margin: auto;
+    margin: 30px auto;
+    border: solid 2px rgb(0, 194, 232);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
