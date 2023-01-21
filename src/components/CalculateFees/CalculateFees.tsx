@@ -90,7 +90,11 @@ const CalculateFees = () => {
                     type="datetime-local"
                     inputValue={inputValueHandler}
                     required="required"
-                    value={new Date().toISOString().slice(0, -8)}
+                    value={
+                        inputValues.orderTime
+                            ? undefined
+                            : new Date().toISOString().slice(0, -8)
+                    }
                 />
 
                 <Button

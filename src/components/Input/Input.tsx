@@ -4,12 +4,12 @@
 import "./Input.css";
 
 // Props types interface
-interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface IProps {
     label: string;
     name: string;
     type: string;
     placeHolder?: string;
-    value?: string;
+    value?: string | undefined;
     unit?: string;
     step?: number;
     required?: any;
