@@ -7,7 +7,7 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import DeliveryFeesResult from "../DeliveryFeesResult/DeliveryFeesResult";
 // import calculate delivery fees function
-import { calculateDeliveryFees } from "../calculateDeliveryFees";
+import { calculateDeliveryFees } from "./calculateDeliveryFees";
 
 // types interface
 interface IState {
