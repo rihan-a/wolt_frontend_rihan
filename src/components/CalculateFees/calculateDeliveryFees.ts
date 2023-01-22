@@ -6,7 +6,36 @@ interface InputTypes {
     orderTime: any;
 }
 
+// functon to check if the order time is During the Friday rush (3 - 7 PM UTC) and it returns true / false
+const checkForFridayRush = (inputValues: InputTypes) => {
+    let orderTime = new Date(inputValues.orderTime);
+    // check if the order day is on friday
+    if (orderTime.getUTCDay() === 5) {
+        //check if the order is during Friday rush (3 - 7 PM UTC)
+        let orderHourUTC = orderTime.getUTCHours() - 12;
+        if (orderHourUTC > 2 && orderHourUTC < 8) {
+            // During friday rush multiply the delivery fees by 1.2x
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+};
+
+// Calculate Delivery Fees Function
+//--------------------------------------------------------------------------------------->
 export const calculateDeliveryFees = (inputValues: InputTypes) => {
+    // validate that the user inputs are valid postive numbers
+    if (
+        inputValues.cartValue <= 0 ||
+        inputValues.deliveryDistance <= 0 ||
+        inputValues.numberOfItems <= 0
+    ) {
+        return null;
+    }
+
     // intiate delivery fees counter to keep track of the different delivery fees
     let deliveryFeesCounter: number = 0;
 
@@ -30,9 +59,6 @@ export const calculateDeliveryFees = (inputValues: InputTypes) => {
 
     // check if the number of items is more than 5
     if (inputValues.numberOfItems > 4) {
-        // if (inputValues.numberOfItems === 5) {
-        //     deliveryFeesCounter += 0.5;
-        // }
         let itemsMoreThanFive = inputValues.numberOfItems - 4;
         deliveryFeesCounter += itemsMoreThanFive * 0.5;
         if (inputValues.numberOfItems > 12) {
@@ -40,26 +66,8 @@ export const calculateDeliveryFees = (inputValues: InputTypes) => {
         }
     }
 
-    // functon to check if the order time is During the Friday rush (3 - 7 PM UTC) and it returns true / false
-    const checkForFridayRush = () => {
-        let orderTime = new Date(inputValues.orderTime);
-        console.log(orderTime);
-        // check if the order day is on friday
-        if (orderTime.getUTCDay() === 5) {
-            //check if the order is during Friday rush (3 - 7 PM UTC)
-            let orderHourUTC = orderTime.getUTCHours() - 12;
-            if (orderHourUTC > 2 && orderHourUTC < 8) {
-                // During friday rush multiply the delivery fees by 1.2x
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    };
-
-    if (checkForFridayRush()) {
+    // check if the order time is During the Friday rush, if yes multiply the total fees by 1.2x
+    if (checkForFridayRush(inputValues)) {
         deliveryFeesCounter *= 1.2;
     }
 
