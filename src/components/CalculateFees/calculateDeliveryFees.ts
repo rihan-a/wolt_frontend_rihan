@@ -40,17 +40,27 @@ export const calculateDeliveryFees = (inputValues: InputTypes) => {
         }
     }
 
-    // check if the order time is During the Friday rush (3 - 7 PM UTC)
-    let orderTime = new Date(inputValues.orderTime);
-    console.log(orderTime);
-    // check if the order day is on friday
-    if (orderTime.getUTCDay() === 5) {
-        //check if the order is during Friday rush (3 - 7 PM UTC)
-        let orderHourUTC = orderTime.getUTCHours() - 12;
-        if (orderHourUTC > 2 && orderHourUTC < 8) {
-            // During friday rush multiply the delivery fees by 1.2x
-            deliveryFeesCounter *= 1.2;
+    // functon to check if the order time is During the Friday rush (3 - 7 PM UTC) and it returns true / false
+    const checkForFridayRush = () => {
+        let orderTime = new Date(inputValues.orderTime);
+        console.log(orderTime);
+        // check if the order day is on friday
+        if (orderTime.getUTCDay() === 5) {
+            //check if the order is during Friday rush (3 - 7 PM UTC)
+            let orderHourUTC = orderTime.getUTCHours() - 12;
+            if (orderHourUTC > 2 && orderHourUTC < 8) {
+                // During friday rush multiply the delivery fees by 1.2x
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
+    };
+
+    if (checkForFridayRush()) {
+        deliveryFeesCounter *= 1.2;
     }
 
     // check if the delivery fees is more than 15, the delivery fees can't be more than 15
