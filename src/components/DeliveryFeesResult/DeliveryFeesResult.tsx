@@ -2,7 +2,7 @@ import React from "react";
 import "./DeliveryFeesResult.css";
 
 interface IProps {
-    fees: number;
+    fees: number | null;
 }
 
 const DeliveryFees: React.FC<IProps> = (props) => {
