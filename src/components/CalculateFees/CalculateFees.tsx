@@ -6,7 +6,7 @@ import "./CalculateFees.css";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import DeliveryFeesResult from "../DeliveryFeesResult/DeliveryFeesResult";
-// import calculate delivery fees function
+// import Calculate delivery fees function
 import { calculateDeliveryFees } from "./calculateDeliveryFees";
 
 // types interface
@@ -39,28 +39,27 @@ const CalculateFees = () => {
     };
 
     // store delivery fees
-    const [deliveryFees, setDeliveryFees] = useState<number>(0);
+    const [deliveryFees, setDeliveryFees] = useState<number | null>(0);
 
     const [error, setError] = useState("");
 
     // function to calculate the tottal delivery fees based on the user input data
     const calculateFeesHandler = (e: any) => {
         e.preventDefault();
-        if (
-            inputValues.cartValue <= 0 ||
-            inputValues.deliveryDistance <= 0 ||
-            inputValues.numberOfItems <= 0
-        ) {
+        // call calculate delivery fees function using the user inputs as an argument, store the returned value in a variable
+        const totalDeliveryFees: number | null =
+            calculateDeliveryFees(inputValues);
+
+        // check if calculateDeliveryFees function returns a truthy value
+        if (totalDeliveryFees) {
+            // reset all inputs on submit
+            e.target.reset();
+            setError("");
+            setDeliveryFees(totalDeliveryFees);
+        } else {
+            // if calculateDeliveryFees function returns null, then throw an error
             console.log("error");
             setError("Input fields must be valid numbers");
-        } else {
-            // reset all inputs on submit
-            setError("");
-            e.target.reset();
-            // call calculate delivery fees function using the user inputs as an argument, store the returned value in a variable
-            const totalDeliveryFees: number =
-                calculateDeliveryFees(inputValues);
-            setDeliveryFees(totalDeliveryFees);
         }
     };
 
