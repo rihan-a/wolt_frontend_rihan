@@ -1,5 +1,5 @@
 // INPUT COMPONENT
-// Reuseable Input
+// Reuseable user Input field
 
 import "./Input.css";
 
@@ -17,21 +17,22 @@ interface IProps {
 }
 
 const Input: React.FC<IProps> = (props) => {
-    // Function to handle input change events and pass it to the parent through props
+    // Function to handle input change events and pass it to parent through props
     const onChangeHandler = (e: any) => {
         props.inputValue({ [e.target.name]: e.target.value });
     };
 
     return (
         <div className="input-wrapper">
-            <label className="input-label">
+            <label htmlFor={props.name} className="input-label">
                 {props.label}:
                 {props.required && <span className="required-star">*</span>}
             </label>
 
-            <div className="input-unit-container">
+            <div className="input-inputUnit-container">
                 <input
                     className="input-field"
+                    id={props.name}
                     name={props.name}
                     type={props.type}
                     placeholder={props.placeHolder}
