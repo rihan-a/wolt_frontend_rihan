@@ -1,6 +1,11 @@
 # Wolt Frontend Assignment for Summer 2023 Engineering Internship
 
-## Run Locally
+## Components Structure 
+
+
+![Untitled](https://user-images.githubusercontent.com/90706137/214118512-fc868fe1-5672-46cc-a4a4-ee9d17135659.jpg)
+
+## Run the App Locally
 
 Go to the project directory
 
