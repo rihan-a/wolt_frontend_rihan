@@ -33,7 +33,7 @@ const CalculateFees = () => {
         setInputValues((existingValues) => ({
             // Retain the existing values
             ...existingValues,
-            // update the new inputs
+            // update with new inputs
             ...value,
         }));
     };
