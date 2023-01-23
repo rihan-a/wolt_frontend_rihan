@@ -1,3 +1,6 @@
+// DELIVERY FEES RESULT
+// Component to render the calculated Delivery fees
+
 import React from "react";
 import "./DeliveryFeesResult.css";
 
