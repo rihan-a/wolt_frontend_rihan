@@ -27,15 +27,6 @@ const checkForFridayRush = (inputValues: InputTypes) => {
 // Calculate Delivery Fees Function
 //--------------------------------------------------------------------------------------->
 export const calculateDeliveryFees = (inputValues: InputTypes) => {
-    // validate that the user inputs are valid postive numbers
-    if (
-        inputValues.cartValue <= 0 ||
-        inputValues.deliveryDistance <= 0 ||
-        inputValues.numberOfItems <= 0
-    ) {
-        return null;
-    }
-
     // intiate delivery fees counter to keep track of the different delivery fees
     let deliveryFeesCounter: number = 0;
 
@@ -44,6 +35,7 @@ export const calculateDeliveryFees = (inputValues: InputTypes) => {
         // if less than 10 add the difference between 10 and the cart value to the delivery fees counter
         deliveryFeesCounter = 10 - inputValues.cartValue;
     }
+
     // check if the delivery distance is more than 1km
     if (inputValues.deliveryDistance >= 1000) {
         // if more than 1km add 2 euro to the delivery fees counter
