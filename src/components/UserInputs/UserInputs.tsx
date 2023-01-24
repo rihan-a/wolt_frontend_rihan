@@ -14,6 +14,12 @@ interface IState {
     orderTime: any;
 }
 
+interface IStateErrors {
+    cartValue: string;
+    deliveryDistance: string;
+    numberOfItems: string;
+}
+
 const UserInputs = (props: IProps) => {
     //store user input values
     const [inputValues, setInputValues] = useState<IState>({
@@ -21,6 +27,12 @@ const UserInputs = (props: IProps) => {
         deliveryDistance: 0,
         numberOfItems: 0,
         orderTime: null,
+    });
+
+    const [inputErrors, setInputErrors] = useState<IStateErrors>({
+        cartValue: "",
+        deliveryDistance: "",
+        numberOfItems: "",
     });
 
     // function to collect user input values from Input components onChange event
@@ -37,9 +49,35 @@ const UserInputs = (props: IProps) => {
 
     const calculateFeesHandler = (e: any) => {
         e.preventDefault();
-        props.calculateFees(inputValues);
-        // reset all inputs on submit
-        e.target.reset();
+
+        if (inputValues.cartValue <= 0) {
+            setInputErrors({
+                ...inputErrors,
+                cartValue:
+                    "Cart Value can't be empty, and must be a valid number",
+            });
+        } else if (inputValues.deliveryDistance <= 0) {
+            setInputErrors({
+                ...inputErrors,
+                deliveryDistance:
+                    "Delivery distance can't be empty, and must be a valid number",
+            });
+        } else if (inputValues.numberOfItems <= 0) {
+            setInputErrors({
+                ...inputErrors,
+                deliveryDistance:
+                    "Number of Items can't be empty, and must be a valid number",
+            });
+        } else {
+            setInputErrors({
+                cartValue: "",
+                deliveryDistance: "",
+                numberOfItems: "",
+            });
+            props.calculateFees(inputValues);
+            // reset all inputs on submit
+            e.target.reset();
+        }
     };
 
     return (
@@ -53,6 +91,7 @@ const UserInputs = (props: IProps) => {
                 inputValue={inputValueHandler}
                 placeHolder="Enter Cart Value"
                 required="required"
+                error={inputErrors.cartValue}
             />
 
             <Input
@@ -63,6 +102,7 @@ const UserInputs = (props: IProps) => {
                 inputValue={inputValueHandler}
                 placeHolder="Enter Delivery distance"
                 required="required"
+                error={inputErrors.deliveryDistance}
             />
             <Input
                 label="Number of Items"
@@ -71,6 +111,7 @@ const UserInputs = (props: IProps) => {
                 inputValue={inputValueHandler}
                 placeHolder="Enter the number of items"
                 required="required"
+                error={inputErrors.numberOfItems}
             />
 
             <Input
