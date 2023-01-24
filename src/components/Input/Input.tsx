@@ -1,6 +1,6 @@
 // INPUT COMPONENT
 // Reuseable user Input field
-
+import { useState } from "react";
 import "./Input.css";
 
 // Props types interface
@@ -13,15 +13,23 @@ interface IProps {
     unit?: string;
     step?: number;
     required?: any;
+    error?: string;
     inputValue: (value: { [name: string]: number }) => void;
 }
 
 const Input: React.FC<IProps> = (props) => {
     // Function to handle input change events and pass it to parent through props
-    const onChangeHandler = (e: any) => {
-        props.inputValue({ [e.target.name]: e.target.value });
-    };
 
+    const [error, setError] = useState("");
+
+    const onChangeHandler = (e: any) => {
+        if (e.target.value >= 0) {
+            props.inputValue({ [e.target.name]: e.target.value });
+            setError("");
+        } else {
+            setError("Input can't be a negative number");
+        }
+    };
     return (
         <div className="input-wrapper">
             <label htmlFor={props.name} className="input-label">
@@ -43,6 +51,7 @@ const Input: React.FC<IProps> = (props) => {
                 />
                 <label className="input-unit"> {props.unit}</label>
             </div>
+            <span className="error-msg">{error ?? props.error}</span>
         </div>
     );
 };
