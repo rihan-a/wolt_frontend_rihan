@@ -5,19 +5,20 @@ import React from "react";
 import "./DeliveryFeesResult.css";
 
 interface IProps {
-    fees: number | null;
+    fees: number | undefined;
 }
 
 const DeliveryFees: React.FC<IProps> = (props) => {
     return (
         <div
             className={
-                props.fees
+                props.fees || props.fees === 0
                     ? "delivery-fees-output active"
                     : "delivery-fees-output"
             }
         >
-            Delivery fees: {props.fees}€
+            Delivery fees: {props.fees}
+            {props.fees || props.fees === 0 ? "€" : " "}
         </div>
     );
 };
