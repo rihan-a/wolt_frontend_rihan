@@ -1,6 +1,10 @@
+// BUTTON COMPONENT
+// Reuseable button
+
 import React from "react";
 import "./Button.css";
 
+// Props types interface
 interface IProps {
     id: string;
     value: string;
