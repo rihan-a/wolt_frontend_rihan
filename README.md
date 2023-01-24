@@ -2,8 +2,7 @@
 
 ## Components Structure 
 
-![app structure](https://user-images.githubusercontent.com/90706137/214161681-67080adb-3032-4621-ae85-ac89f9159c72.jpg)
-
+![App Structure](https://user-images.githubusercontent.com/90706137/214273769-64cfcdcd-80f5-48fa-b07b-68a8f322f62e.jpg)
 
 ## Run the App Locally
 
