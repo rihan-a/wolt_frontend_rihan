@@ -2,13 +2,10 @@
 // a component to collect user inputs and calculate the total delivery fees
 
 import React, { useState } from "react";
-
 import DeliveryFeesResult from "../DeliveryFeesResult/DeliveryFeesResult";
-// import Calculate delivery fees function
 import { calculateDeliveryFees } from "./calculateDeliveryFees";
 import "./CalculateFees.css";
 import UserInputs from "../UserInputs/UserInputs";
-
 import { RotatingLines } from "react-loader-spinner";
 
 // types interface
