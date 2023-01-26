@@ -21,14 +21,13 @@ interface IProps {
 let numberRegex = /^\d+$/;
 
 const Input: React.FC<IProps> = (props) => {
-    // Function to handle input change events and pass it to parent through props
-
     const [error, setError] = useState("");
 
+    // Function to handle input change events and pass it to parent through props
     const onChangeHandler = (e: any) => {
         // check if the input is avalid number and not empty other wise throw and error msg
         if (
-            e.target.value >= 0 &&
+            e.target.value > 0 &&
             numberRegex.test(e.target.value) &&
             e.target.value.trim() !== ""
         ) {
