@@ -17,17 +17,26 @@ interface IProps {
     inputValue: (value: { [name: string]: number }) => void;
 }
 
+// Basic numbers only regex
+let numberRegex = /^\d+$/;
+
 const Input: React.FC<IProps> = (props) => {
     // Function to handle input change events and pass it to parent through props
 
     const [error, setError] = useState("");
 
     const onChangeHandler = (e: any) => {
-        if (e.target.value >= 0) {
+        // check if the input is avalid number and not empty other wise throw and error msg
+        if (
+            e.target.value >= 0 &&
+            numberRegex.test(e.target.value) &&
+            e.target.value.trim() !== ""
+        ) {
+            console.log(numberRegex.test(e.target.value));
             props.inputValue({ [e.target.name]: e.target.value });
             setError("");
         } else {
-            setError("Input can't be a negative number");
+            setError("Input must be valid number");
         }
     };
     return (
