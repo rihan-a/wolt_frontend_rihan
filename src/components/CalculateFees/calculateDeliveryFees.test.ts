@@ -21,7 +21,7 @@ test("delivery fees equals 1.2", async () => {
     expect(deliveryFees).toBe(1.2);
 });
 
-// test for delivery fees incase of the cart value is 100 euro or more
+// test for delivery fees incase of the cart value is 100 euro
 test("delivery fees equals 0", async () => {
     const deliveryFees = await calculateDeliveryFees({
         cartValue: 100,
