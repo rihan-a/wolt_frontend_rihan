@@ -1,3 +1,6 @@
+// USER INPUTS
+// Component to render all user inputs, validate data and handle errors
+
 import React, { useState } from "react";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
@@ -14,6 +17,7 @@ interface IState {
     orderTime: any;
 }
 
+// Error types interface
 interface IStateErrors {
     cartValue: string;
     deliveryDistance: string;
@@ -35,7 +39,7 @@ const UserInputs = (props: IProps) => {
         numberOfItems: "",
     });
 
-    // function to collect user input values from Input components onChange event
+    // function to collect user input values from Input components
     const inputValueHandler = (
         value: { [name: string]: number } | undefined
     ) => {
@@ -50,6 +54,7 @@ const UserInputs = (props: IProps) => {
     const calculateFeesHandler = (e: any) => {
         e.preventDefault();
 
+        // check if the user inputs are zero or less
         if (inputValues.cartValue <= 0) {
             setInputErrors({
                 ...inputErrors,
@@ -68,12 +73,14 @@ const UserInputs = (props: IProps) => {
                 deliveryDistance:
                     "Number of Items can't be empty, and must be a valid number",
             });
+            // if user input are valid numbers more than 0
         } else {
             setInputErrors({
                 cartValue: "",
                 deliveryDistance: "",
                 numberOfItems: "",
             });
+            // pass inputValues through props to parent component
             props.calculateFees(inputValues);
             // reset all inputs on submit
             e.target.reset();
