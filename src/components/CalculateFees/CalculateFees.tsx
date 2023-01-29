@@ -19,7 +19,7 @@ interface IState {
 const CalculateFees = () => {
     // store delivery fees
     const [deliveryFees, setDeliveryFees] = useState<number | undefined>();
-
+    // loading spinner boolean
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
 
     // function to calculate the tottal delivery fees based on the user input data
@@ -35,6 +35,7 @@ const CalculateFees = () => {
         <>
             <UserInputs calculateFees={calculateFeesHandler} />
             <DeliveryFeesResult fees={deliveryFees} />
+
             <div className="loading-spinner">
                 <RotatingLines
                     strokeColor="rgb(0, 194, 232)"
