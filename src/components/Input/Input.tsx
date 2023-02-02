@@ -12,7 +12,7 @@ interface IProps {
     value?: string | undefined;
     unit?: string;
     step?: number;
-    required?: any;
+    required?: boolean | undefined;
     error?: string;
     inputValue: (value: { [name: string]: number }) => void;
 }
@@ -25,13 +25,12 @@ const Input: React.FC<IProps> = (props) => {
 
     // Function to handle input change events and pass it to parent through props
     const onChangeHandler = (e: any) => {
-        // check if the input is avalid number and not empty other wise throw and error msg
+        // check if the input is a valid number and not empty, otherwise throw an error msg
         if (
             e.target.value > 0 &&
             numberRegex.test(e.target.value) &&
             e.target.value.trim() !== ""
         ) {
-            console.log(numberRegex.test(e.target.value));
             props.inputValue({ [e.target.name]: e.target.value });
             setError("");
         } else {
