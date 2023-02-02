@@ -2,12 +2,12 @@
     height: 70px;
     width: 90%;
     margin: 25px auto;
+    font-size: 1.2rem;
     border: solid 2px rgb(200, 200, 200);
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
 }
 
 .active {
