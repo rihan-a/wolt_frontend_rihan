@@ -8,7 +8,7 @@ import "./Button.css";
 interface IProps {
     id: string;
     value: string;
-    btnType: any;
+    btnType: "button" | "submit" | "reset" | undefined;
 }
 
 const Button: React.FC<IProps> = (props) => {
