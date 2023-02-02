@@ -42,7 +42,6 @@
     text-transform: none;
     appearance: none;
     box-shadow: none;
-    transition: border 0.2s linear 0s;
     position: relative;
 }
 
