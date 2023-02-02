@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
+// Props types interface
 interface IProps {
     calculateFees: (inputValues: IState) => void;
 }
@@ -14,7 +15,7 @@ interface IState {
     cartValue: number;
     deliveryDistance: number;
     numberOfItems: number;
-    orderTime: any;
+    orderTime: string | null;
 }
 
 // Error types interface
@@ -54,7 +55,7 @@ const UserInputs = (props: IProps) => {
     const calculateFeesHandler = (e: any) => {
         e.preventDefault();
 
-        // check if the user inputs are zero or less
+        // check if the user inputs are negative number or zero
         if (inputValues.cartValue <= 0) {
             setInputErrors({
                 ...inputErrors,
@@ -97,7 +98,7 @@ const UserInputs = (props: IProps) => {
                 unit="€"
                 inputValue={inputValueHandler}
                 placeHolder="Enter Cart Value"
-                required="required"
+                required={true}
                 error={inputErrors.cartValue}
             />
 
@@ -108,7 +109,7 @@ const UserInputs = (props: IProps) => {
                 unit="m"
                 inputValue={inputValueHandler}
                 placeHolder="Enter Delivery distance"
-                required="required"
+                required={true}
                 error={inputErrors.deliveryDistance}
             />
             <Input
@@ -117,7 +118,7 @@ const UserInputs = (props: IProps) => {
                 type="number"
                 inputValue={inputValueHandler}
                 placeHolder="Enter the number of items"
-                required="required"
+                required={true}
                 error={inputErrors.numberOfItems}
             />
 
@@ -126,7 +127,7 @@ const UserInputs = (props: IProps) => {
                 name="orderTime"
                 type="datetime-local"
                 inputValue={inputValueHandler}
-                required="required"
+                required={true}
                 value={
                     inputValues.orderTime
                         ? undefined
