@@ -9,12 +9,11 @@ interface InputTypes {
 // functon to check if the order time is During the Friday rush (3 - 7 PM UTC) and it returns true / false
 const checkForFridayRush = (inputValues: InputTypes) => {
     let orderTime = new Date(inputValues.orderTime);
-    // check if the order day is on friday
+    // check if the order day is on friday - (Friday = 5)
     if (orderTime.getUTCDay() === 5) {
         //check if the order is during Friday rush (3 - 7 PM UTC)
         let orderHourUTC = orderTime.getUTCHours() - 12;
         if (orderHourUTC > 2 && orderHourUTC < 8) {
-            // During friday rush multiply the delivery fees by 1.2x
             return true;
         } else {
             return false;
