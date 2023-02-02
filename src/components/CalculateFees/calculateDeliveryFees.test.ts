@@ -43,7 +43,7 @@ test("delivery fees equals 7.8", async () => {
 });
 
 // test for delivery fees can never be more than 15 euro
-test("delivery fees equals 19", async () => {
+test("delivery fees equals 15", async () => {
     const deliveryFees = await calculateDeliveryFees({
         cartValue: 80,
         deliveryDistance: 5330,
@@ -51,4 +51,15 @@ test("delivery fees equals 19", async () => {
         orderTime: "2023-01-20T17:30", // Friday rush
     });
     expect(deliveryFees).toBe(15);
+});
+
+// If the number of items is 13, 5,70€ surcharge is added ((9 * 50 cents) + 1,20€)
+test("delivery fees equals 5.7", async () => {
+    const deliveryFees = await calculateDeliveryFees({
+        cartValue: 10,
+        deliveryDistance: 900,
+        numberOfItems: 13,
+        orderTime: "2023-01-22T17:30",
+    });
+    expect(deliveryFees).toBe(5.7);
 });
