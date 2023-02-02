@@ -13,7 +13,7 @@ interface IState {
     cartValue: number;
     deliveryDistance: number;
     numberOfItems: number;
-    orderTime: any;
+    orderTime: string | null;
 }
 
 const CalculateFees = () => {
